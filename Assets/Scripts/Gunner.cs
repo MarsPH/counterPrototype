@@ -17,6 +17,10 @@ public class Gunner : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
+        float maxRayDistance = 100.0f;
+
+        Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.red, 2f);
+
         if (Physics.Raycast(ray, out hit))
         {
             Vector3 targetPoint = hit.point;
