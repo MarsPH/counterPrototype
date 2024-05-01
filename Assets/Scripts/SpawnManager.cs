@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class SpawnManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] GameObject[] Enemies;
+
+    static private float xLeftRange = 12f;
+    static private  float xRightRange = 29f;
+
+    private void Start()
     {
-        
+        InvokeRepeating("SpawnEnemies", 1f, 2f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SpawnEnemies()
     {
-        
+        Instantiate(Enemies[Random.Range(0, Enemies.Length)], new Vector3(Random.Range(xLeftRange, xRightRange), 30, 20), transform.rotation);
     }
 }
