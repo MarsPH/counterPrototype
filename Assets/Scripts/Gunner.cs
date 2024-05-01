@@ -21,20 +21,21 @@ public class Gunner : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.red, 2f);
 
+        Vector3 targetPoint = ray.origin + ray.direction * maxRayDistance;
+
         if (Physics.Raycast(ray, out hit))
         {
-            Vector3 targetPoint = hit.point;
-            Vector3 direction = (targetPoint - bulletSpawnPoint.position).normalized;
-
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+            targetPoint = hit.point;
         }
-        else
+        
+        Vector3 direction = (targetPoint - bulletSpawnPoint.position).normalized;
+        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+        bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+
+
+        if (hit.collider != null)  // Check if the hit object can be a target
         {
-            Vector3 direction = ray.direction.normalized;
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-            bullet.GetComponent<Rigidbody>().AddForce (direction * bullet.GetComponent<Bullet>().speed * 50);
-            Debug.Log("Missed");
+            bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
         }
     }
 }
