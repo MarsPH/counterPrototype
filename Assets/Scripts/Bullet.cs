@@ -7,11 +7,11 @@ public class Bullet : MonoBehaviour
     public float speed = 1000.0f;
     private Rigidbody rb;
     public Transform target;
-    // Start is called before the first frame update
+    
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if (rb == null) // This checks if the Rigidbody component is missing
+        if (rb == null) 
         {
             Debug.LogError("Rigidbody component is missing from this GameObject: " + gameObject.name);
         }
@@ -22,6 +22,10 @@ public class Bullet : MonoBehaviour
         {
             Vector3 direction = (target.position - transform.position).normalized;
             rb.velocity = direction * speed;
+        }
+        else
+        {
+            Debug.Log("No collider touched");
         }
     }
 
@@ -36,6 +40,7 @@ public class Bullet : MonoBehaviour
         if (other.gameObject.CompareTag("Target"))
         {
             Destroy(other.gameObject);
+            Destroy(gameObject);
         }
     }
 }
