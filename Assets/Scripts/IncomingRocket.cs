@@ -4,16 +4,20 @@ using UnityEngine;
 
 public class IncomingRocket : MonoBehaviour
 {
-    public float rocketSpeed = 500f;
+    public float initialrocketSpeed = 50;
+    public float maxRocketSpeed = 100f;
+    public float acceleration = 20f;
     public float curveMagnitude = 100f; 
     public float steeringSpeed = 1f;
 
     private Rigidbody rb;
     public Transform target;
+    private float currentSpeed;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
+        currentSpeed = initialrocketSpeed;
     }
 
     void FixedUpdate()
@@ -23,12 +27,17 @@ public class IncomingRocket : MonoBehaviour
             Vector3 targetDirection = (target.position - transform.position).normalized;
             Vector3 currentVelocity = rb.velocity.normalized;
 
-            Vector3 newVelocity = Vector3.Lerp(currentVelocity, targetDirection, steeringSpeed * Time.deltaTime) * rocketSpeed;
+            Vector3 newVelocity = Vector3.Lerp(currentVelocity, targetDirection, steeringSpeed * Time.deltaTime) * currentSpeed;
             rb.velocity = newVelocity;
 
-            // Apply a continuous upward curving force
-            Vector3 curveForce = new Vector3(0, curveMagnitude, 0);
-            rb.AddForce(curveForce, ForceMode.Acceleration); // Use Force for a continuous application
+            if (currentSpeed < maxRocketSpeed)
+            {
+                currentSpeed += acceleration * Time.deltaTime;
+            }
+
+            Vector3 curveForce = Vector3.up * curveMagnitude;
+            rb.AddForce(curveForce, ForceMode.Acceleration); 
+
             Debug.DrawLine(transform.position, target.position, Color.red);
 
         }
@@ -41,4 +50,6 @@ public class IncomingRocket : MonoBehaviour
         target = assignedTarget;
 
     }
+
+    
 }
