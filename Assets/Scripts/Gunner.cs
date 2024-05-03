@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System;
 
 
 public class Gunner : MonoBehaviour
@@ -23,21 +22,39 @@ public class Gunner : MonoBehaviour
 
         Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.green, 2f);
 
-        Vector3 targetPoint = ray.origin + ray.direction * maxRayDistance;
-
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit, maxRayDistance))
         {
-            targetPoint = hit.point;
+            // A target was hit
+            Vector3 direction = (hit.point - bulletSpawnPoint.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+
+            // Set the target for the bullet if it hits a collider
+            if (hit.collider != null)
+            {
+                bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
+            }
         }
-        
-        Vector3 direction = (targetPoint - bulletSpawnPoint.position).normalized;
-        GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-        bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
-
-
-        if (hit.collider != null)  // Check if the hit object can be a target
+        else
         {
-            bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
+            // No target hit, instantiate and destroy if missed
+            Vector3 direction = (ray.GetPoint(maxRayDistance) - bulletSpawnPoint.position).normalized;
+            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+
+            StartCoroutine(DestroyMissedMissiles(bullet));  // Call coroutine to destroy the missed bullet
         }
+
     }
+    IEnumerator DestroyMissedMissiles(GameObject bullet)
+    {
+        yield return new WaitForSeconds(Random.Range(1, 3));
+        if (bullet != null)  // Check if the bullet still exists
+        {
+            Destroy(bullet);
+        }
+        Destroy(bullet);
+    }
+
+    
 }
