@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class CamMovement : MonoBehaviour
 {
+    [SerializeField] Camera cam;
     [SerializeField] float edgeThreshold = 10f;
     [SerializeField] float rotationSpeed = 5f;
+    [SerializeField] float zoomSensitivity = 5f;
+    [SerializeField] float minFOV = 15f;
+    [SerializeField] float maxFOV = 90f;
+
     void Start()
     {
 
@@ -36,6 +41,11 @@ public class CamMovement : MonoBehaviour
         }
 
         transform.eulerAngles += rotationDirection * Time.deltaTime;
+
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        cam.fieldOfView -= scroll * zoomSensitivity;
+        cam.fieldOfView = Mathf.Clamp(cam.fieldOfView, minFOV, maxFOV);
+
 
     }
 }
