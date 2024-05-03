@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3339405010741911532}
   - component: {fileID: 7727561744318227724}
   - component: {fileID: -8864452927661121213}
+  - component: {fileID: -1801253840731665566}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Target
@@ -115,8 +116,8 @@ Rigidbody:
   m_GameObject: {fileID: 4187913108765202134}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 5
-  m_AngularDrag: 0.05
+  m_Drag: 1
+  m_AngularDrag: 1
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -133,3 +134,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &-1801253840731665566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187913108765202134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6744a5fe02c990f4c950e2585342c76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketSpeed: 10
+  curveMagnitude: 150
