@@ -69,7 +69,7 @@ public class IncomingRocket : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy's Target"))
+        if (gameObject.CompareTag("Enemy's Target"))
         {
             Destroy(gameObject);   
         }
