@@ -9,6 +9,10 @@ public class IncomingRocket : MonoBehaviour
     public float acceleration = 20f;
     public float curveMagnitude = 100f; 
     public float steeringSpeed = 1f;
+    public float ascentHeight = 100f; 
+    
+    private bool isAscending = true; 
+
 
     private Rigidbody rb;
     public Transform target;
@@ -25,18 +29,30 @@ public class IncomingRocket : MonoBehaviour
         if (rb != null && target != null)
         {
             Vector3 targetDirection = (target.position - transform.position).normalized;
-            Vector3 currentVelocity = rb.velocity.normalized;
-
-            Vector3 newVelocity = Vector3.Lerp(currentVelocity, targetDirection, steeringSpeed * Time.deltaTime) * currentSpeed;
-            rb.velocity = newVelocity;
+            float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
             if (currentSpeed < maxRocketSpeed)
             {
-                currentSpeed += acceleration * Time.deltaTime;
+                currentSpeed += acceleration * Time.deltaTime * (distanceToTarget / 1000);
             }
 
-            Vector3 curveForce = Vector3.up * curveMagnitude;
-            rb.AddForce(curveForce, ForceMode.Acceleration); 
+            if (isAscending && transform.position.y < ascentHeight)
+            {
+                // Continue upward force more strongly
+                Vector3 ascentForce = Vector3.up * curveMagnitude;
+                rb.AddForce(ascentForce, ForceMode.Acceleration);
+            }
+            else
+            {
+                // Switch to target-directed force after reaching desired height or if already descending
+                isAscending = false;
+                float adjustedCurveMagnitude = curveMagnitude * (distanceToTarget / 500);
+                rb.AddForce(targetDirection * adjustedCurveMagnitude, ForceMode.Acceleration);
+            }
+
+            Vector3 newVelocity = Vector3.Lerp(rb.velocity.normalized, targetDirection, steeringSpeed * Time.deltaTime) * currentSpeed;
+            rb.velocity = newVelocity;
+
 
             Debug.DrawLine(transform.position, target.position, Color.red);
 
@@ -48,8 +64,8 @@ public class IncomingRocket : MonoBehaviour
     {
         transform.rotation = Quaternion.LookRotation(direction);
         target = assignedTarget;
-
+        isAscending = true; // Reset to ascent state on initialization
     }
 
-    
+
 }
