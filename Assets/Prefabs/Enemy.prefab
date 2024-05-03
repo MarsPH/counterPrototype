@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialrocketSpeed: 1
-  maxRocketSpeed: 150
-  acceleration: 25
+  maxRocketSpeed: 50
+  acceleration: 5
   curveMagnitude: 100
   steeringSpeed: 7
   ascentHeight: 100
