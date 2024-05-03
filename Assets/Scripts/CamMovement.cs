@@ -5,7 +5,8 @@ using UnityEngine;
 public class CamMovement : MonoBehaviour
 {
     [SerializeField] Camera cam;
-    [SerializeField] float edgeThreshold = 10f;
+    [SerializeField] float edgeThresholdVertical = 10f;
+    [SerializeField] float edgeThresholdHorizontal = 125f;
     [SerializeField] float rotationSpeed = 5f;
     [SerializeField] float zoomSensitivity = 5f;
     [SerializeField] float minFOV = 15f;
@@ -20,22 +21,24 @@ public class CamMovement : MonoBehaviour
     {
         Vector3 rotationDirection = Vector3.zero;
 
-        if (Input.mousePosition.x <= edgeThreshold)
+        if (Input.mousePosition.x <= edgeThresholdHorizontal)
         {
             rotationDirection.y -= rotationSpeed;
+            Debug.Log("Touching the left edge");
         }
 
-        else if (Input.mousePosition.x >= Screen.width - edgeThreshold)
+        else if (Input.mousePosition.x >= Screen.width - edgeThresholdHorizontal)
         {
             rotationDirection.y += rotationSpeed;
+            Debug.Log("Toucing Right edge");
         }
 
-        if (Input.mousePosition.y <= edgeThreshold)
+        if (Input.mousePosition.y <= edgeThresholdVertical)
         {
             rotationDirection.x += rotationSpeed;
         }
 
-        else if (Input.mousePosition.y >= Screen.height - edgeThreshold)
+        else if (Input.mousePosition.y >= Screen.height - edgeThresholdVertical)
         {
             rotationDirection.x -= rotationSpeed;
         }

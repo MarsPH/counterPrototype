@@ -146,7 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6744a5fe02c990f4c950e2585342c76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rocketSpeed: 5
-  curveMagnitude: 1
-  steeringSpeed: 1
+  rocketSpeed: 10
+  curveMagnitude: 5
+  steeringSpeed: 3
   target: {fileID: 0}
