@@ -67,5 +67,11 @@ public class IncomingRocket : MonoBehaviour
         isAscending = true; // Reset to ascent state on initialization
     }
 
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy's Target"))
+        {
+            Destroy(gameObject);   
+        }
+    }
 }
