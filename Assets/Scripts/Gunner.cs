@@ -21,7 +21,7 @@ public class Gunner : MonoBehaviour
         RaycastHit hit;
         float maxRayDistance = 100.0f;
 
-        Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.red, 2f);
+        Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.green, 2f);
 
         Vector3 targetPoint = ray.origin + ray.direction * maxRayDistance;
 

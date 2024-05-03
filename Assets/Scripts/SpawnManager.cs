@@ -45,7 +45,7 @@ public class SpawnManager : MonoBehaviour
         IncomingRocket incomingRocket = rocket.GetComponent<IncomingRocket>();
         if (incomingRocket != null)
         {
-            incomingRocket.Initialize(initialDirection);
+            incomingRocket.Initialize(initialDirection, chosenTarget);
         }
         else
         {
