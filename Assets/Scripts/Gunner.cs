@@ -8,17 +8,21 @@ public class Gunner : MonoBehaviour
     public Camera cam;
     public GameObject bulletPrefab;
     public Transform bulletSpawnPoint;
+    public float airSpaceEntryBorderX;
+    private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
             Shoot();
+        if (Input.GetMouseButtonDown(1))
+            AutoMaticShoot();
     }
 
     private void Shoot()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        float maxRayDistance = 250f;
+        float maxRayDistance = 200f;
 
         Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.green, 2f);
 
@@ -33,13 +37,7 @@ public class Gunner : MonoBehaviour
             if (hit.collider != null)
             {
                 bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
-                if (hit.collider.gameObject == null)
-                {
-                    StartCoroutine(DestroyMissedMissiles(bullet));
-                }
             }
-          
-
         }
         else
         {
@@ -51,6 +49,24 @@ public class Gunner : MonoBehaviour
             StartCoroutine(DestroyMissedMissiles(bullet));  // Call coroutine to destroy the missed bullet
         }
 
+    }
+    private void AutoMaticShoot()
+    {
+
+        GameObject[] rockets = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject rocket in rockets)
+        {
+            if (!targetedRockets.Contains(rocket) && rocket.transform.position.x > airSpaceEntryBorderX)
+            {
+                Vector3 direction = (rocket.transform.position - bulletSpawnPoint.position).normalized;
+                GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+                bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+                bullet.GetComponent<Bullet>().SetTarget(rocket.transform);
+
+                targetedRockets.Add(rocket);
+            }
+
+        }
     }
     IEnumerator DestroyMissedMissiles(GameObject bullet)
     {
