@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour
@@ -33,6 +34,10 @@ public class Bullet : MonoBehaviour
         {
             Debug.Log("No collider touched");
         }
+        if (gameObject.transform.position.y < 0)
+        {
+            Destroy(gameObject);
+        }
     }
 
     public void SetTarget(Transform newTarget)
@@ -43,7 +48,7 @@ public class Bullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         //Destroy(gameObject);
-        if (other.gameObject.CompareTag("Target"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             Destroy(other.gameObject);
             Destroy(gameObject);

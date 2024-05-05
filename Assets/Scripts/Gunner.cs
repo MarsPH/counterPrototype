@@ -18,7 +18,7 @@ public class Gunner : MonoBehaviour
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
-        float maxRayDistance = 200f;
+        float maxRayDistance = 250f;
 
         Debug.DrawRay(ray.origin, ray.direction * maxRayDistance, Color.green, 2f);
 
@@ -33,7 +33,13 @@ public class Gunner : MonoBehaviour
             if (hit.collider != null)
             {
                 bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
+                if (hit.collider.gameObject == null)
+                {
+                    StartCoroutine(DestroyMissedMissiles(bullet));
+                }
             }
+          
+
         }
         else
         {
