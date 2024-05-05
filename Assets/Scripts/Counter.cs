@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,10 +16,10 @@ public class Counter : MonoBehaviour
         Count = 0;
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void AddHitCount()
     {
         Count += 1;
-        CounterText.text = "Count : " + Count;
+        CounterText.text = "Ground Hit Count : " + Count;
         //Destroy(other.gameObject);
     }
 }
