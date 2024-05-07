@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -10,12 +11,26 @@ public class Gunner : MonoBehaviour
     public Transform bulletSpawnPoint;
     public float airSpaceEntryBorderX;
     private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
+    private GameObject currentMissile;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(2))
             Shoot();
         if (Input.GetMouseButtonDown(1))
             AutoMaticShoot();
+        else if (Input.GetMouseButtonDown(0)) 
+        {
+            TargetTrackMissileShoot();
+        }
+
+        if (Input.GetMouseButtonUp(0))
+        {
+            if (currentMissile != null)
+            {
+                currentMissile.GetComponent<MissileController>().StopTracking();
+                currentMissile = null;
+            }
+        }
     }
 
     private void Shoot()
@@ -63,9 +78,26 @@ public class Gunner : MonoBehaviour
                 bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
                 bullet.GetComponent<Bullet>().SetTarget(rocket.transform);
 
-                targetedRockets.Add(rocket);
+                targetedRockets.Add(rocket); 
             }
 
+        }
+    }
+    private void TargetTrackMissileShoot()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 350f))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                if (currentMissile != null)
+                {
+                    Destroy(currentMissile);
+                }
+                currentMissile = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+                currentMissile.GetComponent<MissileController>().StartTracking(hit.transform);
+            }
         }
     }
     IEnumerator DestroyMissedMissiles(GameObject bullet)
