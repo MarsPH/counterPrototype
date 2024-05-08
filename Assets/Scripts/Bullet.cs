@@ -50,7 +50,8 @@ public class Bullet : MonoBehaviour
         //Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);
+            IncomingRocket incomingRocket = other.GetComponent<IncomingRocket>();
+            incomingRocket.TakeDamage();
             Destroy(gameObject);
         }
     }

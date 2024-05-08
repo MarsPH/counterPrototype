@@ -9,9 +9,11 @@ public class IncomingRocket : MonoBehaviour
     public float acceleration = 20f;
     public float curveMagnitude = 100f; 
     public float steeringSpeed = 1f;
-    public float ascentHeight = 100f; 
+    public float ascentHeight = 100f;
+    public float rocketHealth;
+    private float currentHealth;
     
-    private bool isAscending = true; 
+    private bool isAscending = true;
 
 
     private Rigidbody rb;
@@ -22,12 +24,14 @@ public class IncomingRocket : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         currentSpeed = initialrocketSpeed;
+        currentHealth = rocketHealth;
     }
 
     void FixedUpdate()
     {
         if (rb != null && target != null)
         {
+   
             Vector3 targetDirection = (target.position - transform.position).normalized;
             float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
@@ -60,6 +64,19 @@ public class IncomingRocket : MonoBehaviour
     }
 
 
+    public void TakeDamage()
+    {
+        if (currentHealth > 0)
+            currentHealth -= 1;
+
+        if (currentHealth == 0)
+            DestroyRocket();
+    }
+
+    public void DestroyRocket()
+    {
+        Destroy(gameObject);
+    }
     public void Initialize(Vector3 direction, Transform assignedTarget)
     {
         transform.rotation = Quaternion.LookRotation(direction);
@@ -71,7 +88,7 @@ public class IncomingRocket : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy's Target"))
         {
-            Destroy(gameObject);   
+            DestroyRocket();
         }
     }
 }

@@ -153,6 +153,7 @@ MonoBehaviour:
   curveMagnitude: 100
   steeringSpeed: 7
   ascentHeight: 100
+  rocketHealth: 3
   target: {fileID: 0}
 --- !u!96 &353842661361020230
 TrailRenderer:

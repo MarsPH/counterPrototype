@@ -61,7 +61,7 @@ public class Gunner : MonoBehaviour
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
             bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
 
-            StartCoroutine(DestroyMissedMissiles(bullet));  // Call coroutine to destroy the missed bullet
+            StartCoroutine(DestroyMissedMissiles(bullet));
         }
 
     }
@@ -103,7 +103,7 @@ public class Gunner : MonoBehaviour
     IEnumerator DestroyMissedMissiles(GameObject bullet)
     {
         yield return new WaitForSeconds(Random.Range(1, 3));
-        if (bullet != null)  // Check if the bullet still exists
+        if (bullet != null)  
         {
             Destroy(bullet);
         }
