@@ -17,10 +17,12 @@ public class ArtilleryBullet : MonoBehaviour
     // - Destroy: To remove the bullet and create an explosion effect.
     // - Instantiate: To create explosion effects.
     /// </summary>
+    public float speed = 1.0f;
+    private Rigidbody rb;
 
     void Start()
     {
-
+        rb = GetComponent<Rigidbody>();
 
     }
 
