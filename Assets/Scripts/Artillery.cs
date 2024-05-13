@@ -5,15 +5,15 @@ using UnityEngine;
 
 public class Artillery : MonoBehaviour
 {
-    public float heatingCap;
-    public float cooldown;
-    public float range;
-    private float shotAmount;
+    public float heatingCap; // Maximum heat before needing to cooldown
+    public float cooldown; // Time it takes to cooldown and reset shot amount
+    public float range; // Maximum range for artillery firing
+    private float shotAmount; // Current number of shots fired, related to heating
 
-    public Transform artillery;
-    public GameObject bulletPrefab;
-    public Camera cam;
-    private bool isCoolingDown;
+    public Transform artillery; // Transform component where bullets are spawned
+    public GameObject bulletPrefab; // Bullet prefab to be instantiated when firing
+    public Camera cam; // Camera to calculate firing direction
+    private bool isCoolingDown; // Flag to manage cooldown state
 
 
 
@@ -45,7 +45,6 @@ public class Artillery : MonoBehaviour
         Vector3 direction = ray.direction;
 
         GameObject bullet = Instantiate(bulletPrefab, artillery.position, Quaternion.LookRotation(direction));
-        //bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<ArtilleryBullet>().speed);
         shotAmount += 1;
     }
     IEnumerator CoolDown()
