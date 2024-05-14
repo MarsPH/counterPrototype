@@ -10,12 +10,6 @@ public class ArtilleryBullet : MonoBehaviour
     // Update method to move the bullet and apply gravity.
     // OnTriggerEnter or use Physics.OverlapSphere for proximity detection.
     // Method to handle explosion.
-
-    // Unity Methods:
-    // - Transform.Translate or Rigidbody.MovePosition for movement.
-    // - Physics.OverlapSphere: To check for nearby targets when exploding.
-    // - Destroy: To remove the bullet and create an explosion effect.
-    // - Instantiate: To create explosion effects.
     /// </summary>
     public float speed = 1.0f;
     public float explosionRadius;
@@ -23,7 +17,7 @@ public class ArtilleryBullet : MonoBehaviour
     private Rigidbody rb;
     private Vector3 firePosition;
     private Vector3 currentPosition;
-    
+
 
     void Start()
     {
@@ -35,35 +29,46 @@ public class ArtilleryBullet : MonoBehaviour
 
     void FixedUpdate()
     {
-        currentPosition = transform.position;
+        Vector3 currentPosition = transform.position;
         float travelDistance = Vector3.Distance(currentPosition, firePosition);
 
         if (travelDistance < maxDestination)
         {
-            rb.AddForce(Vector3.forward * speed, ForceMode.Acceleration);
+            // The bullet will accelrate normally
         }
         else
         {
-            Destroy(gameObject);
+            Explode();
         }
 
-        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, explosionRadius);
-        if (hitColliders.Length > 0)
+        rb.AddForce(Physics.gravity);
+
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in hitColliders)
         {
-            foreach (Collider collider in hitColliders)
+            if (collider.gameObject.CompareTag("Enemy"))
             {
-                if (collider.gameObject.CompareTag("Enemy"))
+                Explode();
+                break;
+            }
+        }
+    }
+
+    private void Explode()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        foreach (Collider collider in hitColliders)
+        {
+            if (collider.gameObject.CompareTag("Enemy"))
+            {
+                IncomingRocket incomingRocket = collider.gameObject.GetComponent<IncomingRocket>();
+                if (incomingRocket != null)
                 {
-                    IncomingRocket incomingRocket = collider.gameObject.GetComponent<IncomingRocket>();
                     incomingRocket.TakeDamage();
                 }
             }
         }
-    
-        // - If an enemy is close or time is up, explode.
-        // - Apply gravity effect to simulate curve due to gravity.
-
-
+        Destroy(gameObject);
     }
     // OnTriggerEnter or Physics.OverlapSphere for detecting proximity.
     // Use Rigidbody for physics-based movement and applying forces.
