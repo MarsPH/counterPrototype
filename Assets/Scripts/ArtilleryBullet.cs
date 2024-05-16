@@ -4,13 +4,6 @@ using UnityEngine;
 
 public class ArtilleryBullet : MonoBehaviour
 {
-    /// <summary>
-    /// Its going to be something like the bullet.
-    ///  Variables for speed, gravity effect, explosion radius, lifetime.
-    // Update method to move the bullet and apply gravity.
-    // OnTriggerEnter or use Physics.OverlapSphere for proximity detection.
-    // Method to handle explosion.
-    /// </summary>
     public float speed = 1.0f;
     public float explosionRadius;
     public float maxDestination = 100f;
@@ -70,6 +63,5 @@ public class ArtilleryBullet : MonoBehaviour
         }
         Destroy(gameObject);
     }
-    // OnTriggerEnter or Physics.OverlapSphere for detecting proximity.
-    // Use Rigidbody for physics-based movement and applying forces.
+
 }
