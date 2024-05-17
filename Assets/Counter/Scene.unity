@@ -3189,7 +3189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketPrefabs:
-  - {fileID: 4187913108765202134, guid: 65fde60a2a4aaf64d9bdfada4ffa1dd2, type: 3}
+  - {fileID: 4187913108765202134, guid: 99c1caf7c0386a844b84593c0db52b89, type: 3}
   rocketSpawnPosition:
   - {fileID: 912841804}
   - {fileID: 541020878}

@@ -54,5 +54,18 @@ public class InterceptionMissileBehavior : MonoBehaviour
             incomingRocket.TakeDamage(damagePower);
             Destroy(gameObject);
         }
+        else if (other.gameObject.CompareTag("Enemy1"))
+        {
+            HypersonicMissile hypersonicMissile = other.GetComponent<HypersonicMissile>();
+            hypersonicMissile.TakeDamage(damagePower);
+            Destroy(gameObject);
+        }
+        else if (other.gameObject.CompareTag("Enemy2"))
+        {
+            SuicideDrone suicdeDrone = other.GetComponent<SuicideDrone>();
+            suicdeDrone.TakeDamage(damagePower);
+            Destroy(gameObject);
+        }
+
     }
 }

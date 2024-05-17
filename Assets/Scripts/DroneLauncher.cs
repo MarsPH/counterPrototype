@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HypersonicLauncer : MonoBehaviour
+public class DroneLauncher : MonoBehaviour
 {
     public GameObject[] rocketPrefabs;
     public Transform[] rocketSpawnPosition;
@@ -29,14 +29,14 @@ public class HypersonicLauncer : MonoBehaviour
         Vector3 initialDirection = (chosenTarget.position - spawnPoint.position).normalized;
 
         GameObject rocket = Instantiate(rocketPrefabs[Random.Range(0, rocketPrefabs.Length)], spawnPoint.position, Quaternion.LookRotation(initialDirection));
-        HypersonicMissile hypersonicMissile = rocket.GetComponent<HypersonicMissile>();
-        if (hypersonicMissile != null)
+        SuicideDrone suicideDrone = rocket.GetComponent<SuicideDrone>();
+        if (suicideDrone != null)
         {
-            hypersonicMissile.Initialize(initialDirection, chosenTarget);
+            suicideDrone.Initialize(initialDirection, chosenTarget);
         }
         else
         {
-            Debug.LogError("HypersonicMissile component is missing on the rocket prefab!");
+            Debug.LogError("Suicide Drone component is missing on the rocket prefab!");
         }
     }
 }
