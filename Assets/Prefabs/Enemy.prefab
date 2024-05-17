@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 3339405010741911532}
   - component: {fileID: 7727561744318227724}
   - component: {fileID: -8864452927661121213}
-  - component: {fileID: -1801253840731665566}
   - component: {fileID: 353842661361020230}
+  - component: {fileID: -1801253840731665566}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -135,26 +135,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-1801253840731665566
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4187913108765202134}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6744a5fe02c990f4c950e2585342c76e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  initialrocketSpeed: 1
-  maxRocketSpeed: 35
-  acceleration: 1
-  curveMagnitude: 100
-  steeringSpeed: 7
-  ascentHeight: 100
-  rocketHealth: 3
-  target: {fileID: 0}
 --- !u!96 &353842661361020230
 TrailRenderer:
   serializedVersion: 3
@@ -259,3 +239,23 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
+--- !u!114 &-1801253840731665566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4187913108765202134}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6744a5fe02c990f4c950e2585342c76e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  initialrocketSpeed: 1
+  maxRocketSpeed: 35
+  acceleration: 1
+  curveMagnitude: 100
+  steeringSpeed: 7
+  ascentHeight: 100
+  rocketHealth: 3
+  target: {fileID: 0}
