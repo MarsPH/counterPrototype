@@ -46,12 +46,12 @@ public class Gunner : MonoBehaviour
             // A target was hit
             Vector3 direction = (hit.point - bulletSpawnPoint.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
 
             // Set the target for the bullet if it hits a collider
             if (hit.collider != null)
             {
-                bullet.GetComponent<Bullet>().SetTarget(hit.collider.transform);
+                bullet.GetComponent<InterceptionMissileBehavior>().SetTarget(hit.collider.transform);
             }
         }
         else
@@ -59,7 +59,7 @@ public class Gunner : MonoBehaviour
             // No target hit, instantiate and destroy if missed
             Vector3 direction = (ray.GetPoint(maxRayDistance) - bulletSpawnPoint.position).normalized;
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
+            bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
 
             StartCoroutine(DestroyMissedMissiles(bullet));
         }

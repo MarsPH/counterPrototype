@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: 8491949896710576386}
   - component: {fileID: 6809111916651059656}
   - component: {fileID: 9043514151947293647}
-  - component: {fileID: 5532332510764734610}
   - component: {fileID: -4189436403361426162}
   - component: {fileID: 3866794969815931001}
+  - component: {fileID: -2808518618140635358}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: InterceptionMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -136,21 +136,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &5532332510764734610
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324858596226257068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 82cc5ba3f2f891145ba5b7e572727031, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 25
-  curveMagnitude: 30
-  target: {fileID: 8306513283102321824, guid: 99c1caf7c0386a844b84593c0db52b89, type: 3}
 --- !u!96 &-4189436403361426162
 TrailRenderer:
   serializedVersion: 3
@@ -268,3 +253,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 50
+--- !u!114 &-2808518618140635358
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6324858596226257068}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aedcd3cf9d0fe9f439af2a6b661d8506, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 1000
+  curveMagnitude: 2
+  target: {fileID: 0}

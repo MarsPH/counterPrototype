@@ -1,9 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class InterceptionMissileBehavior : MonoBehaviour
 {
     public float speed = 1000.0f;
     public float curveMagnitude = 2f;
@@ -15,7 +14,7 @@ public class Bullet : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
-        if (rb == null) 
+        if (rb == null)
         {
             Debug.LogError("Rigidbody component is missing from this GameObject: " + gameObject.name);
         }
@@ -27,7 +26,7 @@ public class Bullet : MonoBehaviour
             Vector3 direction = (target.position - transform.position).normalized;
             rb.velocity = direction * speed;
 
-            Vector3 curvingForce = new Vector3(0, curveMagnitude, 0); 
+            Vector3 curvingForce = new Vector3(0, curveMagnitude, 0);
             rb.AddForce(curvingForce, ForceMode.Acceleration);
         }
         else
