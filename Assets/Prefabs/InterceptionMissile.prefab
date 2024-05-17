@@ -265,6 +265,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aedcd3cf9d0fe9f439af2a6b661d8506, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1000
-  curveMagnitude: 2
+  speed: 35
+  curveMagnitude: 25
   target: {fileID: 0}

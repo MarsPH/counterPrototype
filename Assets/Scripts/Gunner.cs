@@ -75,8 +75,8 @@ public class Gunner : MonoBehaviour
             {
                 Vector3 direction = (rocket.transform.position - bulletSpawnPoint.position).normalized;
                 GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
-                bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<Bullet>().speed);
-                bullet.GetComponent<Bullet>().SetTarget(rocket.transform);
+                bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
+                bullet.GetComponent<InterceptionMissileBehavior>().SetTarget(rocket.transform);
 
                 targetedRockets.Add(rocket); 
             }
