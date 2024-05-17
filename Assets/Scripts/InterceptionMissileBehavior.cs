@@ -6,6 +6,7 @@ public class InterceptionMissileBehavior : MonoBehaviour
 {
     public float speed = 1000.0f;
     public float curveMagnitude = 2f;
+    public float damagePower;
 
     private Rigidbody rb;
     public Transform target;
@@ -50,7 +51,7 @@ public class InterceptionMissileBehavior : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             IncomingRocket incomingRocket = other.GetComponent<IncomingRocket>();
-            incomingRocket.TakeDamage();
+            incomingRocket.TakeDamage(damagePower);
             Destroy(gameObject);
         }
     }

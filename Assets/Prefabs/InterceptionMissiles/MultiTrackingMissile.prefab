@@ -14,10 +14,9 @@ GameObject:
   - component: {fileID: 6809111916651059656}
   - component: {fileID: 9043514151947293647}
   - component: {fileID: -4189436403361426162}
-  - component: {fileID: 3866794969815931001}
   - component: {fileID: -2808518618140635358}
   m_Layer: 0
-  m_Name: InterceptionMissile
+  m_Name: MultiTrackingMissile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -240,19 +239,6 @@ TrailRenderer:
   m_Autodestruct: 0
   m_Emitting: 1
   m_ApplyActiveColorSpace: 1
---- !u!114 &3866794969815931001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6324858596226257068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa47f016a204ff743989206ffe5060a7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 50
 --- !u!114 &-2808518618140635358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -267,4 +253,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 35
   curveMagnitude: 25
+  damagePower: 1.5
   target: {fileID: 0}

@@ -64,10 +64,10 @@ public class IncomingRocket : MonoBehaviour
     }
 
 
-    public void TakeDamage()
+    public void TakeDamage(float damageAmount)
     {
         if (currentHealth > 0)
-            currentHealth -= 1;
+            currentHealth -= damageAmount;
 
         if (currentHealth == 0)
             DestroyRocket();

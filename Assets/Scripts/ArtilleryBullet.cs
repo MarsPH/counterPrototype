@@ -7,6 +7,7 @@ public class ArtilleryBullet : MonoBehaviour
     public float speed = 1.0f;
     public float explosionRadius;
     public float maxDestination = 100f;
+    public float damagePower;
     private Rigidbody rb;
     private Vector3 firePosition;
     private Vector3 currentPosition;
@@ -57,7 +58,7 @@ public class ArtilleryBullet : MonoBehaviour
                 IncomingRocket incomingRocket = collider.gameObject.GetComponent<IncomingRocket>();
                 if (incomingRocket != null)
                 {
-                    incomingRocket.TakeDamage();
+                    incomingRocket.TakeDamage(damagePower);
                 }
             }
         }

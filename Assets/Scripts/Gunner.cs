@@ -7,7 +7,9 @@ using UnityEngine;
 public class Gunner : MonoBehaviour
 {
     public Camera cam;
-    public GameObject bulletPrefab;
+    public GameObject autoTrackingMissilePrefab;
+    public GameObject manualTrackingMissilePrefab;
+    public GameObject multiTargetMissilePrefab;
     public Transform bulletSpawnPoint;
     public float airSpaceEntryBorderX;
     private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
@@ -17,10 +19,10 @@ public class Gunner : MonoBehaviour
         if (Input.GetMouseButtonDown(2))
             Shoot();
         if (Input.GetMouseButtonDown(1))
-            AutoMaticShoot();
+            multitargetShoot();
         else if (Input.GetMouseButtonDown(0)) 
         {
-            TargetTrackMissileShoot();
+            ManualTargetTrackMissileShoot();
         }
 
         if (Input.GetMouseButtonUp(0))
@@ -45,7 +47,7 @@ public class Gunner : MonoBehaviour
         {
             // A target was hit
             Vector3 direction = (hit.point - bulletSpawnPoint.position).normalized;
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+            GameObject bullet = Instantiate(autoTrackingMissilePrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
             bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
 
             // Set the target for the bullet if it hits a collider
@@ -58,14 +60,14 @@ public class Gunner : MonoBehaviour
         {
             // No target hit, instantiate and destroy if missed
             Vector3 direction = (ray.GetPoint(maxRayDistance) - bulletSpawnPoint.position).normalized;
-            GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+            GameObject bullet = Instantiate(autoTrackingMissilePrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
             bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
 
             StartCoroutine(DestroyMissedMissiles(bullet));
         }
 
     }
-    private void AutoMaticShoot()
+    private void multitargetShoot()
     {
 
         GameObject[] rockets = GameObject.FindGameObjectsWithTag("Enemy");
@@ -74,7 +76,7 @@ public class Gunner : MonoBehaviour
             if (!targetedRockets.Contains(rocket) && rocket.transform.position.x > airSpaceEntryBorderX)
             {
                 Vector3 direction = (rocket.transform.position - bulletSpawnPoint.position).normalized;
-                GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
+                GameObject bullet = Instantiate(multiTargetMissilePrefab, bulletSpawnPoint.position, Quaternion.LookRotation(direction));
                 bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
                 bullet.GetComponent<InterceptionMissileBehavior>().SetTarget(rocket.transform);
 
@@ -83,7 +85,7 @@ public class Gunner : MonoBehaviour
 
         }
     }
-    private void TargetTrackMissileShoot()
+    private void ManualTargetTrackMissileShoot()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
@@ -95,7 +97,7 @@ public class Gunner : MonoBehaviour
                 {
                     Destroy(currentMissile);
                 }
-                currentMissile = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
+                currentMissile = Instantiate(manualTrackingMissilePrefab, bulletSpawnPoint.position, Quaternion.identity);
                 currentMissile.GetComponent<MissileController>().StartTracking(hit.transform);
             }
         }
