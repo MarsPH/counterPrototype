@@ -69,7 +69,7 @@ public class IncomingRocket : MonoBehaviour
         if (currentHealth > 0)
             currentHealth -= damageAmount;
 
-        if (currentHealth == 0)
+        if (currentHealth <= 0)
             DestroyRocket();
     }
 
