@@ -2,93 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class IncomingRocket : MonoBehaviour
+public class IncomingRocket : BaseRocket
 {
-    public float initialrocketSpeed = 50;
-    public float maxRocketSpeed = 100f;
-    public float acceleration = 20f;
-    public float curveMagnitude = 100f; 
-    public float steeringSpeed = 1f;
-    public float ascentHeight = 100f;
-    public float rocketHealth;
-    protected float currentHealth;
-    
-    private bool isAscending = true;
-
-
-    protected Rigidbody rb;
-    public Transform target;
-    protected float currentSpeed;
-
-    virtual protected void Awake()
+    protected override void Awake()
     {
-        rb = GetComponent<Rigidbody>();
-        currentSpeed = initialrocketSpeed;
-        currentHealth = rocketHealth;
+        base.Awake();
+        initialSpeed = 50f;
+        maxSpeed = 100f;
+        acceleration = 20f;
+        health = 100f;
+        damagePower = 50f;
+        ascentHeight = 100f;
     }
 
-    virtual protected void FixedUpdate()
+    protected override void FixedUpdate()
     {
-        if (rb != null && target != null)
-        {
-   
-            Vector3 targetDirection = (target.position - transform.position).normalized;
-            float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
-            if (currentSpeed < maxRocketSpeed)
-            {
-                currentSpeed += acceleration * Time.deltaTime * (distanceToTarget / 1000);
-            }
-
-            if (isAscending && transform.position.y < ascentHeight)
-            {
-                // Continue upward force more strongly
-                Vector3 ascentForce = Vector3.up * curveMagnitude;
-                rb.AddForce(ascentForce, ForceMode.Acceleration);
-            }
-            else
-            {
-                // Switch to target-directed force after reaching desired height or if already descending
-                isAscending = false;
-                float adjustedCurveMagnitude = curveMagnitude * (distanceToTarget / 500);
-                rb.AddForce(targetDirection * adjustedCurveMagnitude, ForceMode.Acceleration);
-            }
-
-            Vector3 newVelocity = Vector3.Lerp(rb.velocity.normalized, targetDirection, steeringSpeed * Time.deltaTime) * currentSpeed;
-            rb.velocity = newVelocity;
-
-
-            Debug.DrawLine(transform.position, target.position, Color.red);
-
-        }
-    }
-
-
-    public void TakeDamage(float damageAmount)
-    {
-        if (currentHealth > 0)
-            currentHealth -= damageAmount;
-
-        if (currentHealth <= 0)
-            DestroyRocket();
-    }
-
-    public void DestroyRocket()
-    {
-        Destroy(gameObject);
-    }
-    public void Initialize(Vector3 direction, Transform assignedTarget)
-    {
-        transform.rotation = Quaternion.LookRotation(direction);
-        target = assignedTarget;
-        isAscending = true; // Reset to ascent state on initialization
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Enemy's Target"))
-        {
-            DestroyRocket();
-        }
+        base.FixedUpdate();
     }
 }

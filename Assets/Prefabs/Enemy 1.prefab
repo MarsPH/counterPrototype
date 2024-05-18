@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 4959120711375642663}
   m_Layer: 0
   m_Name: Enemy 1
-  m_TagString: Enemy1
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -251,12 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636457b90782233408d08a186854bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialrocketSpeed: 10
-  maxRocketSpeed: 50
+  initialSpeed: 10
+  maxSpeed: 50
   acceleration: 7
   curveMagnitude: 150
   steeringSpeed: 2
   ascentHeight: 150
-  rocketHealth: 2
-  heatThreshold: 100
+  health: 2
+  damagePower: 100
   target: {fileID: 0}
+  heatThreshold: 100

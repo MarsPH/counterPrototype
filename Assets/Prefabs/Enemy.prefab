@@ -251,11 +251,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6744a5fe02c990f4c950e2585342c76e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialrocketSpeed: 1
-  maxRocketSpeed: 35
+  initialSpeed: 1
+  maxSpeed: 25
   acceleration: 1
   curveMagnitude: 100
   steeringSpeed: 7
   ascentHeight: 100
-  rocketHealth: 3
+  health: 0
+  damagePower: 0
   target: {fileID: 0}

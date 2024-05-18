@@ -11,7 +11,6 @@ public class InterceptionMissileBehavior : MonoBehaviour
     private Rigidbody rb;
     public Transform target;
 
-
     void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -20,6 +19,7 @@ public class InterceptionMissileBehavior : MonoBehaviour
             Debug.LogError("Rigidbody component is missing from this GameObject: " + gameObject.name);
         }
     }
+
     void Update()
     {
         if (target != null)
@@ -32,9 +32,10 @@ public class InterceptionMissileBehavior : MonoBehaviour
         }
         else
         {
-            Debug.Log("No collider touched");
+            Debug.Log("No target assigned");
         }
-        if (gameObject.transform.position.y < 0)
+
+        if (transform.position.y < 0)
         {
             Destroy(gameObject);
         }
@@ -47,25 +48,14 @@ public class InterceptionMissileBehavior : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        //Destroy(gameObject);
         if (other.gameObject.CompareTag("Enemy"))
         {
-            IncomingRocket incomingRocket = other.GetComponent<IncomingRocket>();
-            incomingRocket.TakeDamage(damagePower);
-            Destroy(gameObject);
+            BaseRocket baseRocket = other.GetComponent<BaseRocket>();
+            if (baseRocket != null)
+            {
+                baseRocket.TakeDamage(damagePower);
+                Destroy(gameObject);
+            }
         }
-        else if (other.gameObject.CompareTag("Enemy1"))
-        {
-            HypersonicMissile hypersonicMissile = other.GetComponent<HypersonicMissile>();
-            hypersonicMissile.TakeDamage(damagePower);
-            Destroy(gameObject);
-        }
-        else if (other.gameObject.CompareTag("Enemy2"))
-        {
-            SuicideDrone suicdeDrone = other.GetComponent<SuicideDrone>();
-            suicdeDrone.TakeDamage(damagePower);
-            Destroy(gameObject);
-        }
-
     }
 }
