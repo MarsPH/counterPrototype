@@ -257,7 +257,7 @@ MonoBehaviour:
   curveMagnitude: 250
   steeringSpeed: 2
   ascentHeight: 150
-  health: 2
+  health: 1.5
   damagePower: 100
   target: {fileID: 0}
   heatThreshold: 100

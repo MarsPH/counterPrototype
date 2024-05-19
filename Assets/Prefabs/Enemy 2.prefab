@@ -257,7 +257,7 @@ MonoBehaviour:
   curveMagnitude: 150
   steeringSpeed: 25
   ascentHeight: 50
-  health: 5
+  health: 1
   damagePower: 5
   target: {fileID: 0}
   proximityRange: 10

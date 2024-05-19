@@ -257,6 +257,6 @@ MonoBehaviour:
   curveMagnitude: 100
   steeringSpeed: 3
   ascentHeight: 100
-  health: 0
+  health: 3
   damagePower: 0
   target: {fileID: 0}

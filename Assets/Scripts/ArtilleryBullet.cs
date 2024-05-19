@@ -53,13 +53,11 @@ public class ArtilleryBullet : MonoBehaviour
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in hitColliders)
         {
-            if (collider.gameObject.CompareTag("Enemy"))
+            BaseRocket baseRocket = collider.GetComponent<BaseRocket>();
+            if (baseRocket != null)
             {
-                IncomingRocket incomingRocket = collider.gameObject.GetComponent<IncomingRocket>();
-                if (incomingRocket != null)
-                {
-                    incomingRocket.TakeDamage(damagePower);
-                }
+                baseRocket.TakeDamage(damagePower);
+                Destroy(gameObject);
             }
         }
         Destroy(gameObject);
