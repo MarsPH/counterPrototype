@@ -251,10 +251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636457b90782233408d08a186854bc70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 10
-  maxSpeed: 50
-  acceleration: 7
-  curveMagnitude: 150
+  initialSpeed: 1
+  maxSpeed: 35
+  acceleration: 5
+  curveMagnitude: 250
   steeringSpeed: 2
   ascentHeight: 150
   health: 2

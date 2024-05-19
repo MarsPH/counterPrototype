@@ -252,10 +252,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   initialSpeed: 1
-  maxSpeed: 25
+  maxSpeed: 20
   acceleration: 1
   curveMagnitude: 100
-  steeringSpeed: 7
+  steeringSpeed: 3
   ascentHeight: 100
   health: 0
   damagePower: 0

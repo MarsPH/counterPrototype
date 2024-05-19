@@ -251,14 +251,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 29532a3147f18c8438b26d0aa73ff0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialSpeed: 1
-  maxSpeed: 0
-  acceleration: 1
-  curveMagnitude: 50
-  steeringSpeed: 10
+  initialSpeed: 5
+  maxSpeed: 10
+  acceleration: 3
+  curveMagnitude: 150
+  steeringSpeed: 25
   ascentHeight: 50
-  health: 0
-  damagePower: 0
+  health: 5
+  damagePower: 5
   target: {fileID: 0}
   proximityRange: 10
-  selfDestructTime: 25

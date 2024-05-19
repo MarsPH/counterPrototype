@@ -7,8 +7,6 @@ public class HypersonicMissile : BaseRocket
     [SerializeField] private float heatThreshold = 100f; // Heat threshold for overheating mechanics
     private float heatLevel = 0f; // Heat level management
 
-    // Remove the Awake method that sets default values to allow Unity Editor overrides
-
     protected override void FixedUpdate()
     {
         base.FixedUpdate();
