@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class BaseRocket : MonoBehaviour
@@ -12,7 +13,9 @@ public class BaseRocket : MonoBehaviour
     [SerializeField] protected float ascentHeight;
     [SerializeField] protected float health;
     [SerializeField] protected float damagePower;
-
+    
+    protected static TextMeshProUGUI destroyedCountText;
+    protected static float destroyedCount = 0;
     protected float currentHealth;
     protected bool isAscending = true;
     protected Rigidbody rb;
@@ -21,6 +24,10 @@ public class BaseRocket : MonoBehaviour
 
     protected virtual void Awake()
     {
+        if (destroyedCountText == null)
+        {
+            destroyedCountText = GameObject.Find("DestroyedRocketCountText").GetComponent<TextMeshProUGUI>();
+        }
         rb = GetComponent<Rigidbody>();
         currentSpeed = initialSpeed;
         currentHealth = health;
@@ -62,6 +69,8 @@ public class BaseRocket : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            destroyedCount += 1;
+            destroyedCountText.text = $"Intercepted Rockets: {destroyedCount}";
             DestroyRocket();
         }
     }
@@ -80,17 +89,7 @@ public class BaseRocket : MonoBehaviour
 
     protected virtual void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
-        {
-            BaseRocket enemyRocket = other.GetComponent<BaseRocket>();
-            if (enemyRocket != null)
-            {
-                enemyRocket.TakeDamage(damagePower);
-                DestroyRocket();
-            }
-        
-        }
-        else if (other.gameObject.CompareTag("Enemy's Target"))
+        if (other.gameObject.CompareTag("Enemy's Target"))
         {
             DestroyRocket();
         }
