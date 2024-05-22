@@ -3353,7 +3353,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 122, y: -111.06}
+  m_AnchoredPosition: {x: 122, y: -79}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &413101401
@@ -3600,213 +3600,6 @@ Transform:
   - {fileID: 1945904178}
   m_Father: {fileID: 183436390}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &444991091
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 444991093}
-  - component: {fileID: 444991092}
-  - component: {fileID: 444991094}
-  - component: {fileID: 444991095}
-  - component: {fileID: 444991096}
-  m_Layer: 0
-  m_Name: Spawn Manager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &444991092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444991091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 428adc2156f4a6d439bbfe2508d69ddd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocketPrefabs:
-  - {fileID: 4187913108765202134, guid: 99c1caf7c0386a844b84593c0db52b89, type: 3}
-  rocketSpawnPosition:
-  - {fileID: 912841804}
-  - {fileID: 541020878}
-  - {fileID: 456940612}
-  - {fileID: 417474607}
-  - {fileID: 1230561517}
-  - {fileID: 1107835569}
-  - {fileID: 1202634329}
-  - {fileID: 1508681778}
-  - {fileID: 1599499167}
-  - {fileID: 1389205441}
-  - {fileID: 496003478}
-  - {fileID: 122767608}
-  - {fileID: 1055797129}
-  - {fileID: 1982873919}
-  - {fileID: 1657898619}
-  - {fileID: 1068553941}
-  targets:
-  - {fileID: 145979412}
-  - {fileID: 1754976897}
-  - {fileID: 376115197}
-  - {fileID: 172628088}
-  - {fileID: 875183720}
-  - {fileID: 884871522}
-  - {fileID: 527272362}
-  - {fileID: 16655984}
-  - {fileID: 1660467738}
-  - {fileID: 538102750}
-  - {fileID: 2098969302}
-  - {fileID: 1380287413}
-  - {fileID: 1546835036}
-  - {fileID: 651431425}
-  - {fileID: 1030955032}
-  - {fileID: 1276409304}
-  - {fileID: 520032783}
-  - {fileID: 135923300}
-  - {fileID: 547231870}
-  - {fileID: 1431940321}
---- !u!4 &444991093
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444991091}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -60.187946, y: -29.269629, z: 108.3263}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &444991094
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444991091}
-  serializedVersion: 4
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &444991095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444991091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b59a8d5930bdcf04a9d60f70a32aa72e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocketPrefabs:
-  - {fileID: 4187913108765202134, guid: 65fde60a2a4aaf64d9bdfada4ffa1dd2, type: 3}
-  rocketSpawnPosition:
-  - {fileID: 292697265}
-  - {fileID: 1214393412}
-  - {fileID: 1690225205}
-  - {fileID: 945564905}
-  - {fileID: 516481064}
-  - {fileID: 849599086}
-  targets:
-  - {fileID: 145979412}
-  - {fileID: 520032783}
-  - {fileID: 16655984}
-  - {fileID: 1380287413}
-  - {fileID: 1754976897}
-  - {fileID: 135923300}
-  - {fileID: 1660467738}
-  - {fileID: 1546835036}
-  - {fileID: 376115197}
-  - {fileID: 651431425}
-  - {fileID: 884871522}
-  - {fileID: 1030955032}
-  - {fileID: 172628088}
-  - {fileID: 547231870}
-  - {fileID: 538102750}
-  - {fileID: 2098969302}
-  - {fileID: 875183720}
-  - {fileID: 1276409304}
-  - {fileID: 527272362}
-  - {fileID: 1431940321}
---- !u!114 &444991096
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 444991091}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ad18df21988cb349a5c02c0585d5f71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rocketPrefabs:
-  - {fileID: 4187913108765202134, guid: 86efef8ee4b292a469f2cfd9a1234b2f, type: 3}
-  rocketSpawnPosition:
-  - {fileID: 1396371674}
-  - {fileID: 834723749}
-  - {fileID: 2055782535}
-  - {fileID: 1182142304}
-  - {fileID: 1586987493}
-  - {fileID: 1215202691}
-  - {fileID: 1389970438}
-  - {fileID: 1083587979}
-  - {fileID: 1979855606}
-  - {fileID: 1536698027}
-  - {fileID: 1153323917}
-  - {fileID: 896735381}
-  - {fileID: 1204674597}
-  - {fileID: 388237857}
-  - {fileID: 1743968728}
-  targets:
-  - {fileID: 145979412}
-  - {fileID: 520032783}
-  - {fileID: 16655984}
-  - {fileID: 1380287413}
-  - {fileID: 1754976897}
-  - {fileID: 135923300}
-  - {fileID: 1660467738}
-  - {fileID: 1546835036}
-  - {fileID: 376115197}
-  - {fileID: 651431425}
-  - {fileID: 884871522}
-  - {fileID: 172628088}
-  - {fileID: 547231870}
-  - {fileID: 538102750}
-  - {fileID: 2098969302}
-  - {fileID: 875183720}
-  - {fileID: 1276409304}
-  - {fileID: 527272362}
-  - {fileID: 1431940321}
-  - {fileID: 1030955032}
 --- !u!1 &456940611
 GameObject:
   m_ObjectHideFlags: 0
@@ -14795,7 +14588,7 @@ GameObject:
   - component: {fileID: 1375407768}
   - component: {fileID: 1375407767}
   m_Layer: 5
-  m_Name: DestroyedRocketCountText (1)
+  m_Name: DestroyedRocketCountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22043,7 +21836,52 @@ MonoBehaviour:
   easyRocketPrefab: {fileID: 4187913108765202134, guid: 86efef8ee4b292a469f2cfd9a1234b2f, type: 3}
   mediumRocketPrefab: {fileID: 4187913108765202134, guid: 99c1caf7c0386a844b84593c0db52b89, type: 3}
   hardRocketPrefab: {fileID: 4187913108765202134, guid: 65fde60a2a4aaf64d9bdfada4ffa1dd2, type: 3}
-  spawnPoints: []
+  rocketSpawnPositions:
+  - {fileID: 912841804}
+  - {fileID: 417474607}
+  - {fileID: 456940612}
+  - {fileID: 1230561517}
+  - {fileID: 541020878}
+  - {fileID: 1107835569}
+  - {fileID: 1767767093}
+  - {fileID: 1202634329}
+  - {fileID: 1508681778}
+  - {fileID: 1599499167}
+  - {fileID: 1389205441}
+  - {fileID: 496003478}
+  - {fileID: 849599086}
+  - {fileID: 292697265}
+  - {fileID: 1214393412}
+  - {fileID: 1690225205}
+  - {fileID: 1657898619}
+  - {fileID: 516481064}
+  - {fileID: 2049328650}
+  - {fileID: 122767608}
+  - {fileID: 1055797129}
+  - {fileID: 1982873919}
+  - {fileID: 1657898619}
+  - {fileID: 1068553941}
+  targets:
+  - {fileID: 145979412}
+  - {fileID: 520032783}
+  - {fileID: 16655984}
+  - {fileID: 1380287413}
+  - {fileID: 135923300}
+  - {fileID: 1754976897}
+  - {fileID: 1660467738}
+  - {fileID: 1546835036}
+  - {fileID: 376115197}
+  - {fileID: 651431425}
+  - {fileID: 884871522}
+  - {fileID: 1030955032}
+  - {fileID: 172628088}
+  - {fileID: 547231870}
+  - {fileID: 538102750}
+  - {fileID: 2098969302}
+  - {fileID: 875183720}
+  - {fileID: 1276409304}
+  - {fileID: 527272362}
+  - {fileID: 1431940321}
   currentWave: 0
   score: 0
 --- !u!4 &2038524335
@@ -22874,7 +22712,6 @@ SceneRoots:
   - {fileID: 250417157}
   - {fileID: 1699402825}
   - {fileID: 1137332035}
-  - {fileID: 444991093}
   - {fileID: 632782343}
   - {fileID: 1014918564}
   - {fileID: 183436390}
