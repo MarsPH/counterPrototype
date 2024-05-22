@@ -1,7 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
+using TMPro;
 
 public class BaseRocket : MonoBehaviour
 {
@@ -13,7 +11,7 @@ public class BaseRocket : MonoBehaviour
     [SerializeField] protected float ascentHeight;
     [SerializeField] protected float health;
     [SerializeField] protected float damagePower;
-    
+
     protected static TextMeshProUGUI destroyedCountText;
     protected static float destroyedCount = 0;
     protected float currentHealth;
@@ -78,6 +76,7 @@ public class BaseRocket : MonoBehaviour
     protected virtual void DestroyRocket()
     {
         Destroy(gameObject);
+        GameManager.instance.RocketDestroyed();
     }
 
     public virtual void Initialize(Vector3 direction, Transform assignedTarget)

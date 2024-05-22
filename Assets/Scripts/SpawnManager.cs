@@ -12,8 +12,6 @@ public class SpawnManager : MonoBehaviour
     public Transform[] rocketSpawnPosition;
     public Transform[] targets;
 
-    static private float xLeftRange = 12f;
-    static private  float xRightRange = 29f;
 
     private void Start()
     {
