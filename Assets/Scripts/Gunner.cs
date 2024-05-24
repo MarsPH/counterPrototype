@@ -14,6 +14,7 @@ public class Gunner : MonoBehaviour
     public float airSpaceEntryBorderX;
     private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
     private GameObject currentMissile;
+    public InterceptionLaser interceptionLaser;
     void Update()
     {
         if (Input.GetMouseButtonDown(2))
@@ -32,6 +33,10 @@ public class Gunner : MonoBehaviour
                 currentMissile.GetComponent<MissileController>().StopTracking();
                 currentMissile = null;
             }
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            ShootLaser();
         }
     }
 
@@ -99,6 +104,18 @@ public class Gunner : MonoBehaviour
                 }
                 currentMissile = Instantiate(manualTrackingMissilePrefab, bulletSpawnPoint.position, Quaternion.identity);
                 currentMissile.GetComponent<MissileController>().StartTracking(hit.transform);
+            }
+        }
+    }
+    private void ShootLaser()
+    {
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+        if (Physics.Raycast(ray, out hit, 350f))
+        {
+            if (hit.collider.CompareTag("Enemy"))
+            {
+                interceptionLaser.StartHeating(hit.transform);
             }
         }
     }

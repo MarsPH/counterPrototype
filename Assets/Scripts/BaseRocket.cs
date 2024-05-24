@@ -14,7 +14,7 @@ public class BaseRocket : MonoBehaviour
 
     protected static TextMeshProUGUI destroyedCountText;
     protected static float destroyedCount = 0;
-    protected float currentHealth;
+    public float currentHealth;
     protected bool isAscending = true;
     protected Rigidbody rb;
     public Transform target;
