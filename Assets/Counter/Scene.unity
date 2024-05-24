@@ -5186,7 +5186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d7061930dba5b45b8375241e3b280d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 0}
+  mainCamera: {fileID: 1648811352}
   artilleryCamera: {fileID: 163194622}
   transitionDuration: 1
 --- !u!4 &552903096
@@ -17306,11 +17306,11 @@ Transform:
   m_GameObject: {fileID: 1648811350}
   serializedVersion: 2
   m_LocalRotation: {x: -0.19996405, y: -0.3736123, z: -0.082827814, w: 0.90198}
-  m_LocalPosition: {x: 79.82622, y: -21.25268, z: -6.3788314}
+  m_LocalPosition: {x: 20, y: 5, z: 1.52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 544304286}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: -25, y: -45, z: 0}
 --- !u!114 &1648811355
 MonoBehaviour:
@@ -22763,16 +22763,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 6586925891479965257, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1648811353}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1648811353}
   - {fileID: 552903096}
   - {fileID: 163194625}
   - {fileID: 2135679470}
