@@ -11900,7 +11900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2072473bb93d2b243919bd8fb8670d62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 1648811352}
   autoTrackingMissilePrefab: {fileID: 6324858596226257068, guid: 93ff95ad98b136e45b785a547cc8602e, type: 3}
   manualTrackingMissilePrefab: {fileID: 6324858596226257068, guid: 760f80929ebabc44ea06d5414a5b9314, type: 3}
   multiTargetMissilePrefab: {fileID: 6324858596226257068, guid: c04f8ae6013c03147ad16ad1aa88eab2, type: 3}
