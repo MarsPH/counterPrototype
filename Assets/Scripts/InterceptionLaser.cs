@@ -13,6 +13,15 @@ public class InterceptionLaser : MonoBehaviour
     private bool isHeatingUp = false;
     private bool isFiring = false;
     private Transform target;
+    private Material laserMaterial;
+
+    void Start()
+    {
+        // Initialize the material
+        laserMaterial = new Material(Shader.Find("Standard"));
+        laserMaterial.EnableKeyword("_EMISSION");
+        lineRenderer.material = laserMaterial;
+    }
 
     void Update()
     {
@@ -20,8 +29,9 @@ public class InterceptionLaser : MonoBehaviour
         {
             heatUpTimer += Time.deltaTime;
             float progress = heatUpTimer / heatUpTime;
-            lineRenderer.startColor = Color.Lerp(coldColor, hotColor, progress);
-            lineRenderer.endColor = lineRenderer.startColor;
+            Color currentColor = Color.Lerp(coldColor, hotColor, progress);
+            laserMaterial.SetColor("_Color", currentColor);
+            laserMaterial.SetColor("_EmissionColor", currentColor);
 
             // Update the positions while heating up to follow the target
             if (target != null)
@@ -69,6 +79,8 @@ public class InterceptionLaser : MonoBehaviour
         isHeatingUp = true;
         heatUpTimer = 0f;
         lineRenderer.enabled = true;
+        laserMaterial.SetColor("_Color", coldColor);
+        laserMaterial.SetColor("_EmissionColor", coldColor);
         lineRenderer.startColor = coldColor;
         lineRenderer.endColor = coldColor;
         lineRenderer.positionCount = 2; // Ensure the line has 2 positions
