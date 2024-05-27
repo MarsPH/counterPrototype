@@ -11906,7 +11906,7 @@ MonoBehaviour:
   multiTargetMissilePrefab: {fileID: 6324858596226257068, guid: c04f8ae6013c03147ad16ad1aa88eab2, type: 3}
   bulletSpawnPoint: {fileID: 1137332035}
   airSpaceEntryBorderX: -80
-  interceptionLaser: {fileID: -5217539225226226005, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
+  interceptionLaser: {fileID: 1742580109}
 --- !u!1 &1137729493
 GameObject:
   m_ObjectHideFlags: 0
@@ -18703,6 +18703,17 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1742580109 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -5217539225226226005, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
+  m_PrefabInstance: {fileID: 8165229895924639289}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d07ae6c2a7e437f4bacc1dd86e728a25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1743968727
 GameObject:
   m_ObjectHideFlags: 0
@@ -22723,15 +22734,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6586925891479965257, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -59.826218
+      value: 16.36
       objectReference: {fileID: 0}
     - target: {fileID: 6586925891479965257, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 26.25268
+      value: 15.05
       objectReference: {fileID: 0}
     - target: {fileID: 6586925891479965257, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 7.8988314
+      value: 5.03
       objectReference: {fileID: 0}
     - target: {fileID: 6586925891479965257, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
       propertyPath: m_LocalRotation.w
@@ -22761,6 +22772,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6834314337387598322, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6834314337387598322, guid: bdd9828685a725b4a84f80c263104fc0, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 41cd1b4e8b4c36341a5a9723046a9b25, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
