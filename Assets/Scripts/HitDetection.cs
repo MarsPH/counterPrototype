@@ -6,7 +6,6 @@ public class HitDetection : MonoBehaviour
 {
     private GameObject hitObject;
     private Counter Counter;
-    // Start is called before the first frame update
     void Start()
     {
         hitObject = GameObject.Find("Rocket Target");
@@ -14,7 +13,6 @@ public class HitDetection : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
         

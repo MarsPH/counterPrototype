@@ -8,7 +8,6 @@ public class MissileController : MonoBehaviour
     public float speed = 30f;
 
     bool isTracking = false;
-    // Update is called once per frame
     void Update()
     {
         if (target != null && isTracking)

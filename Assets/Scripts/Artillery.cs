@@ -24,7 +24,7 @@ public class Artillery : MonoBehaviour
             if (Input.GetKey(KeyCode.Space))
             {
                 Shoot();
-                nextFireTime = Time.time + fireRate; // Set the next fire time
+                nextFireTime = Time.time + fireRate; 
             }
         }
         else

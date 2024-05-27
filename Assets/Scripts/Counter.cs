@@ -20,6 +20,5 @@ public class Counter : MonoBehaviour
     {
         Count += 1;
         CounterText.text = "Ground Hit Count : " + Count;
-        //Destroy(other.gameObject);
     }
 }

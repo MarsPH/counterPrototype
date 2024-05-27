@@ -9,7 +9,7 @@ public class InterceptionLaser : MonoBehaviour
     public Color coldColor = Color.blue; 
     public Color hotColor = Color.red; 
     public LineRenderer lineRenderer;
-    public Transform laserOrigin; // Origin point
+    public Transform laserOrigin; 
 
     private float heatUpTimer = 0f;
     private bool isHeatingUp = false;
