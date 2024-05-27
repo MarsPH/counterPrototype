@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-
 
 public class Gunner : MonoBehaviour
 {
@@ -14,14 +12,15 @@ public class Gunner : MonoBehaviour
     public float airSpaceEntryBorderX;
     private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
     private GameObject currentMissile;
-    public InterceptionLaser interceptionLaser;
+    public InterceptionLaser interceptionLaser; // Add reference to InterceptionLaser
+
     void Update()
     {
         if (Input.GetMouseButtonDown(2))
             Shoot();
         if (Input.GetMouseButtonDown(1))
             multitargetShoot();
-        else if (Input.GetMouseButtonDown(0)) 
+        else if (Input.GetMouseButtonDown(0))
         {
             ManualTargetTrackMissileShoot();
         }
@@ -70,11 +69,10 @@ public class Gunner : MonoBehaviour
 
             StartCoroutine(DestroyMissedMissiles(bullet));
         }
-
     }
+
     private void multitargetShoot()
     {
-
         GameObject[] rockets = GameObject.FindGameObjectsWithTag("Enemy");
         foreach (GameObject rocket in rockets)
         {
@@ -85,11 +83,11 @@ public class Gunner : MonoBehaviour
                 bullet.GetComponent<Rigidbody>().AddForce(direction * bullet.GetComponent<InterceptionMissileBehavior>().speed);
                 bullet.GetComponent<InterceptionMissileBehavior>().SetTarget(rocket.transform);
 
-                targetedRockets.Add(rocket); 
+                targetedRockets.Add(rocket);
             }
-
         }
     }
+
     private void ManualTargetTrackMissileShoot()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -107,6 +105,7 @@ public class Gunner : MonoBehaviour
             }
         }
     }
+
     private void ShootLaser()
     {
         Ray ray = cam.ScreenPointToRay(Input.mousePosition);
@@ -119,15 +118,13 @@ public class Gunner : MonoBehaviour
             }
         }
     }
+
     IEnumerator DestroyMissedMissiles(GameObject bullet)
     {
         yield return new WaitForSeconds(Random.Range(1, 3));
-        if (bullet != null)  
+        if (bullet != null)
         {
             Destroy(bullet);
         }
-        Destroy(bullet);
     }
-
-    
 }

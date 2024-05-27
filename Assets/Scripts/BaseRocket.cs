@@ -12,6 +12,11 @@ public class BaseRocket : MonoBehaviour
     [SerializeField] protected float health;
     [SerializeField] protected float damagePower;
 
+    public float GetHealth()
+    {
+        return health;
+    }
+
     protected static TextMeshProUGUI destroyedCountText;
     protected static float destroyedCount = 0;
     public float currentHealth;
