@@ -10,7 +10,6 @@ public class CameraSwitcher : MonoBehaviour
     private Camera currentCamera;
     private bool isTransitioning = false;
 
-    // Variables to store initial positions and rotations
     private Vector3 mainCameraInitialPosition;
     private Quaternion mainCameraInitialRotation;
     private Vector3 artilleryCameraInitialPosition;
@@ -25,7 +24,6 @@ public class CameraSwitcher : MonoBehaviour
         currentCamera = mainCamera;
         Debug.Log("Starting with Main Camera");
 
-        // Store initial positions and rotations
         mainCameraInitialPosition = mainCamera.transform.position;
         mainCameraInitialRotation = mainCamera.transform.rotation;
         artilleryCameraInitialPosition = artilleryCamera.transform.position;

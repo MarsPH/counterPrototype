@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class HypersonicMissile : BaseRocket
 {
-    [SerializeField] private float heatThreshold = 100f; // Heat threshold for overheating mechanics
-    private float heatLevel = 0f; // Heat level management
+    [SerializeField] private float heatThreshold = 100f; 
+    private float heatLevel = 0f; 
 
     protected override void FixedUpdate()
     {
