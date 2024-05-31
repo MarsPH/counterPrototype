@@ -24,4 +24,5 @@ public class HitDetection : MonoBehaviour
             Counter.AddHitCount();
         }
     }
+
 }

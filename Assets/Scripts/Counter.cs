@@ -7,10 +7,23 @@ using UnityEngine.UI;
 
 public class Counter : MonoBehaviour
 {
+    public static Counter Instance { get; private set; }
     public Text CounterText;
 
     private int Count = 0;
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+            //DontDestroyOnLoad(gameObject); // Optional
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+    }
     private void Start()
     {
         Count = 0;

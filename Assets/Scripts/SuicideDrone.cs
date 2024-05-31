@@ -21,6 +21,7 @@ public class SuicideDrone : BaseRocket
     }
     void Explode()
     {
+        Counter.Instance.AddHitCount();
         DestroyRocket();
     }
 }
