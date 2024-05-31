@@ -83,7 +83,7 @@ public class InterceptionLaser : MonoBehaviour
         laserMaterial.SetColor("_EmissionColor", coldColor);
         lineRenderer.startColor = coldColor;
         lineRenderer.endColor = coldColor;
-        lineRenderer.positionCount = 2; // Ensure the line has 2 positions
+        lineRenderer.positionCount = 2; // Line will have 2 position's because of this
         lineRenderer.SetPosition(0, laserOrigin.position);
         lineRenderer.SetPosition(1, target.position);
     }

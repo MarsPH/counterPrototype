@@ -101,8 +101,8 @@ public class GameManager : MonoBehaviour
     public void RocketDestroyed()
     {
         rocketsRemaining--;
-        score += 100; // Example score increment
-        scoreText.text = "Score: " + score;
+        //score += 100; 
+        //scoreText.text = "Score: " + score;
 
         if (rocketsRemaining <= 0)
         {

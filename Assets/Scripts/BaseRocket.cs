@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class BaseRocket : MonoBehaviour
 {
@@ -72,9 +73,12 @@ public class BaseRocket : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
+            DestroyRocket();
+            int score = GameManager.instance.score += 1;
             destroyedCount += 1;
             destroyedCountText.text = $"Intercepted Rockets: {destroyedCount}";
-            DestroyRocket();
+            GameManager.instance.scoreText.text = "Score: " + score;
+
         }
     }
 

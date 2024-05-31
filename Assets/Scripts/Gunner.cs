@@ -12,7 +12,7 @@ public class Gunner : MonoBehaviour
     public float airSpaceEntryBorderX;
     private HashSet<GameObject> targetedRockets = new HashSet<GameObject>();
     private GameObject currentMissile;
-    public InterceptionLaser interceptionLaser; // Add reference to InterceptionLaser
+    public InterceptionLaser interceptionLaser; 
 
     void Update()
     {
