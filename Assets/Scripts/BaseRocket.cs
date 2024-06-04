@@ -73,12 +73,11 @@ public class BaseRocket : MonoBehaviour
         currentHealth -= damageAmount;
         if (currentHealth <= 0)
         {
-            DestroyRocket();
             int score = GameManager.instance.score += 1;
             destroyedCount += 1;
             destroyedCountText.text = $"Intercepted Rockets: {destroyedCount}";
             GameManager.instance.scoreText.text = "Score: " + score;
-
+            DestroyRocket();
         }
     }
 
