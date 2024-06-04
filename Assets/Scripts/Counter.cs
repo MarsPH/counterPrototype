@@ -9,11 +9,18 @@ public class Counter : MonoBehaviour
 {
     public static Counter Instance { get; private set; }
     public Text CounterText;
+    public HealthBar healthBar;
+    public int maxhealth = 10;
+    public int currenthealth;
+
 
     private int Count = 0;
 
     private void Awake()
     {
+        currenthealth = maxhealth;
+        healthBar.SetHealth(maxhealth);
+
         if (Instance == null)
         {
             Instance = this;
@@ -31,6 +38,8 @@ public class Counter : MonoBehaviour
 
     public void AddHitCount()
     {
+        currenthealth--;
+        healthBar.SetHealth((int)currenthealth);
         Count += 1;
         CounterText.text = "Ground Hit Count : " + Count;
     }
