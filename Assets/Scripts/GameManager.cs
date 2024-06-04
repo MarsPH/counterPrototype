@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public Transform[] targets;
     public int currentWave = 0;
     public int score = 0;
-
+    public string targetTag = "Enemy's Target";
     private int rocketsToSpawn;
     private int rocketsRemaining;
 
@@ -35,7 +35,18 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        InitializeTargets();
         StartNextWave();
+    }
+
+    void InitializeTargets()
+    {
+        GameObject[] targetObjects = GameObject.FindGameObjectsWithTag(targetTag);
+        targets = new Transform[targetObjects.Length];
+        for (int i = 0; i < targetObjects.Length; i++)
+        {
+            targets[i] = targetObjects[i].transform;
+        }
     }
 
     void StartNextWave()
@@ -59,6 +70,12 @@ public class GameManager : MonoBehaviour
 
     private void LaunchRocketFromRandomPosition()
     {
+        if (targets.Length == 0)
+        {
+            Debug.LogError("No targets available!");
+            return;
+        }
+
         Transform chosenTarget = targets[Random.Range(0, targets.Length)];
         Transform spawnPoint = rocketSpawnPositions[Random.Range(0, rocketSpawnPositions.Length)];
         Vector3 initialDirection = (chosenTarget.position - spawnPoint.position).normalized;
