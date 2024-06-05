@@ -128,7 +128,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 41cd1b4e8b4c36341a5a9723046a9b25, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -228,4 +228,4 @@ MonoBehaviour:
   coldColor: {r: 0, g: 0, b: 1, a: 1}
   hotColor: {r: 1, g: 0, b: 0, a: 1}
   lineRenderer: {fileID: 6834314337387598322}
-  laserOrigin: {fileID: 0}
+  laserOrigin: {fileID: 6586925891479965257}
