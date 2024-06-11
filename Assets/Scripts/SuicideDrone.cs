@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class SuicideDrone : BaseRocket
 {
     public float proximityRange = 10f;
+    public int dronePoints;
 
     protected override void FixedUpdate()
     {
@@ -21,7 +23,7 @@ public class SuicideDrone : BaseRocket
     }
     void Explode()
     {
-        Counter.Instance.AddHitCount();
+        Counter.Instance.AddHitCount(1);
         DestroyRocket();
     }
 }

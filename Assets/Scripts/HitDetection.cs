@@ -21,7 +21,7 @@ public class HitDetection : MonoBehaviour
     {
         if (other != null && other.gameObject.CompareTag("Enemy"))
         {
-            Counter.AddHitCount();
+            Counter.AddHitCount(3);
         }
     }
 
