@@ -52,7 +52,7 @@ public class GameManager : MonoBehaviour
     void StartNextWave()
     {
         currentWave++;
-        rocketsToSpawn = currentWave * 5; // Example: Increase number of rockets each wave
+        rocketsToSpawn = currentWave * 5; 
         rocketsRemaining = rocketsToSpawn;
         waveText.text = "Wave: " + currentWave;
 
@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < rocketsToSpawn; i++)
         {
             LaunchRocketFromRandomPosition();
-            yield return new WaitForSeconds(Random.Range(2, 5)); // Random delay between rocket spawns
+            yield return new WaitForSeconds(Random.Range(2, 5)); 
         }
     }
 
@@ -95,7 +95,7 @@ public class GameManager : MonoBehaviour
 
     GameObject GetRocketPrefab()
     {
-        float difficultyRatio = Mathf.Clamp01((float)currentWave / 10); // Assuming max difficulty at wave 10
+        float difficultyRatio = Mathf.Clamp01((float)currentWave / 10); 
         float easyChance = Mathf.Lerp(0.7f, 0.1f, difficultyRatio);
         float mediumChance = Mathf.Lerp(0.2f, 0.4f, difficultyRatio);
         float hardChance = Mathf.Lerp(0.1f, 0.5f, difficultyRatio);
@@ -118,8 +118,6 @@ public class GameManager : MonoBehaviour
     public void RocketDestroyed()
     {
         rocketsRemaining--;
-        //score += 100; 
-        //scoreText.text = "Score: " + score;
 
         if (rocketsRemaining <= 0)
         {
