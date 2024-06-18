@@ -26,7 +26,7 @@ public class Counter : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            //DontDestroyOnLoad(gameObject); // Optional
+            DontDestroyOnLoad(gameObject); 
         }
         else
         {
