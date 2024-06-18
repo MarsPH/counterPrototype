@@ -4,15 +4,24 @@ using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static ScoreManager instance;
 
-    // Update is called once per frame
-    void Update()
+    public int coins = 300;
+    // public Upgrade[] upgrades
+
+    //Refreneces
+    public TextAlignment coinText;
+    public GameObject shopUI;
+
+    private void Awake()
     {
-        
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }
