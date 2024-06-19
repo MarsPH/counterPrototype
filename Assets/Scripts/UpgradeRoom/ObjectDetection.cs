@@ -6,9 +6,9 @@ using UnityEngine;
 public class ObjectDetection : MonoBehaviour
 {
     public Camera playerCamera;
-    public LayerMask interactableLayer; //
-    public TextMeshProUGUI interactText;
-    public GameObject upgradeNodePreFab;
+    public LayerMask interactableLayer; // Layer for interactable objects
+    public TextMeshProUGUI interactText; // TextMeshPro for interaction text
+    public GameObject upgradeNodePrefab; // Prefab for the upgrade node
     private GameObject currentObject;
     private List<GameObject> activeNodes = new List<GameObject>();
 
@@ -27,23 +27,26 @@ public class ObjectDetection : MonoBehaviour
             currentObject = null;
             HideInteractUI();
         }
-        if (currentObject != null && Input.GetKeyDown(KeyCode.E))
+
+        if (currentObject != null && Input.GetKeyDown(KeyCode.E)) // Assuming "E" is the interact key
         {
             InteractWithObject(currentObject);
         }
 
+        // Handle mouse hover over upgrade nodes
         foreach (GameObject node in activeNodes)
         {
             RectTransform nodeRectTransform = node.GetComponent<RectTransform>();
             Vector2 localMousePosition = nodeRectTransform.InverseTransformPoint(Input.mousePosition);
             if (nodeRectTransform.rect.Contains(localMousePosition))
             {
-                nodeRectTransform.localPosition = Vector3.one;
+                // Enlarge and show upgrade information
+                nodeRectTransform.localScale = Vector3.one * 1.2f;
                 node.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
-
             }
             else
             {
+                // Reset scale and hide upgrade information
                 nodeRectTransform.localScale = Vector3.one;
                 node.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
             }
@@ -64,32 +67,34 @@ public class ObjectDetection : MonoBehaviour
     void InteractWithObject(GameObject obj)
     {
         obj.transform.SetParent(playerCamera.transform);
-        obj.transform.localPosition = new Vector3(0, 0, 2); // I may change this
+        obj.transform.localPosition = new Vector3(0, 0, 2); // Adjust as needed
 
         ShowUpgradeNodes(obj);
     }
+
     void ShowUpgradeNodes(GameObject obj)
     {
         ClearActiveNodes();
-        //Defines Position
-        Vector3[] nodePositions = { new Vector3(1, 0, 0), new Vector3(-1, 0, 0), new Vector3(0, 1, 0), new Vector3(0, -1, 0) };
 
-        foreach (Vector3 pos in nodePositions)
+        UpgradableObject upgradableObject = obj.GetComponent<UpgradableObject>();
+        if (upgradableObject == null)
+            return;
+
+        foreach (UpgradeNode node in upgradableObject.upgradeNodes)
         {
-            GameObject node = Instantiate(upgradeNodePreFab, obj.transform.position + pos, Quaternion.identity, obj.transform);
-            activeNodes.Add(node);
-            node.GetComponentInChildren<TextMeshProUGUI>().text = "Upgrade Info";
-            node.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
-
+            GameObject nodeObj = Instantiate(upgradeNodePrefab, obj.transform.position + node.positionOffset, Quaternion.identity, obj.transform);
+            activeNodes.Add(nodeObj);
+            nodeObj.GetComponentInChildren<TextMeshProUGUI>().text = node.upgradeInfo;
+            nodeObj.GetComponentInChildren<TextMeshProUGUI>().enabled = false; // Initially hide the text
         }
+    }
 
-        void ClearActiveNodes()
+    void ClearActiveNodes()
+    {
+        foreach (GameObject node in activeNodes)
         {
-            foreach (GameObject node in activeNodes)
-            {
-                Destroy(node);
-            }
-            activeNodes.Clear();
+            Destroy(node);
         }
+        activeNodes.Clear();
     }
 }
