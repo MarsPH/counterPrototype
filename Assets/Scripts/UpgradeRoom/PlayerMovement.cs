@@ -27,7 +27,10 @@ public class PlayerMovement : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
         //It will lock the cursor
+=======
+>>>>>>> main
         Cursor.lockState = CursorLockMode.Locked;
     }
 

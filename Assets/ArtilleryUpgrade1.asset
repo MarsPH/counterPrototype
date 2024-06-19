@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cae1a9703c5d4844cb4268d18520c13a, type: 3}
   m_Name: ArtilleryUpgrade1
   m_EditorClassIdentifier: 
-  name: 
-  description: 
-  cost: 0
-  damage: 0
-  range: 0
+  itemName: Artillery
+  levels:
+  - level: 1
+    cost: 15
+    powerIncrease: 5
+    cooldownDecrease: 0.1
