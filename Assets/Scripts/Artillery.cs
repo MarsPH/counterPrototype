@@ -71,4 +71,35 @@ public class Artillery : MonoBehaviour
         shotAmount = 0;
         isCoolingDown = false;
     }
+
+    // Upgrade methods
+    public void IncreaseHeatingCap(float amount)
+    {
+        heatingCap += amount;
+        Debug.Log($"Heating capacity increased by {amount}. New heating cap: {heatingCap}");
+    }
+
+    public void DecreaseCooldown(float amount)
+    {
+        cooldown -= amount;
+        Debug.Log($"Cooldown decreased by {amount}. New cooldown: {cooldown}");
+    }
+
+    public void IncreaseRange(float amount)
+    {
+        range += amount;
+        Debug.Log($"Range increased by {amount}. New range: {range}");
+    }
+
+    public void IncreaseFireRate(float amount)
+    {
+        fireRate -= amount; // Fire rate decrease means faster firing
+        Debug.Log($"Fire rate increased. New fire rate: {fireRate}");
+    }
+
+    public void IncreaseBulletSpeed(float amount)
+    {
+        bulletSpeed += amount;
+        Debug.Log($"Bullet speed increased by {amount}. New bullet speed: {bulletSpeed}");
+    }
 }
