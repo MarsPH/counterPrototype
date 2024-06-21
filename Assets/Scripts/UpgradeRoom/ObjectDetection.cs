@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -36,19 +35,21 @@ public class ObjectDetection : MonoBehaviour
         // Handle mouse hover over upgrade nodes
         foreach (GameObject node in activeNodes)
         {
-            RectTransform nodeRectTransform = node.GetComponent<RectTransform>();
-            Vector2 localMousePosition = nodeRectTransform.InverseTransformPoint(Input.mousePosition);
-            if (nodeRectTransform.rect.Contains(localMousePosition))
+            if (node == null) continue;
+
+            Collider nodeCollider = node.GetComponent<Collider>();
+            Ray nodeRay = playerCamera.ScreenPointToRay(Input.mousePosition);
+            RaycastHit nodeHit;
+
+            if (nodeCollider.Raycast(nodeRay, out nodeHit, Mathf.Infinity))
             {
-                // Enlarge and show upgrade information
-                nodeRectTransform.localScale = Vector3.one * 1.2f;
-                node.GetComponentInChildren<TextMeshProUGUI>().enabled = true;
+                node.transform.localScale = Vector3.one * 1.2f;
+                node.GetComponentInChildren<Canvas>().gameObject.SetActive(true);
             }
             else
             {
-                // Reset scale and hide upgrade information
-                nodeRectTransform.localScale = Vector3.one;
-                node.GetComponentInChildren<TextMeshProUGUI>().enabled = false;
+                node.transform.localScale = Vector3.one;
+                node.GetComponentInChildren<Canvas>().gameObject.SetActive(false);
             }
         }
     }
@@ -85,7 +86,7 @@ public class ObjectDetection : MonoBehaviour
             GameObject nodeObj = Instantiate(upgradeNodePrefab, obj.transform.position + node.positionOffset, Quaternion.identity, obj.transform);
             activeNodes.Add(nodeObj);
             nodeObj.GetComponentInChildren<TextMeshProUGUI>().text = node.upgradeInfo;
-            nodeObj.GetComponentInChildren<TextMeshProUGUI>().enabled = false; // Initially hide the text
+            nodeObj.GetComponentInChildren<Canvas>().gameObject.SetActive(false); // Initially hide the panel
         }
     }
 
